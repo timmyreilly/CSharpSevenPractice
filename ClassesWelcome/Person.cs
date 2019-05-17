@@ -32,6 +32,12 @@ namespace ClassesWelcome
 
     public class PersonWithProperties 
     {
+
+        // static for all PersonWithProperties 
+        // all person are adults and younger than 70 for all 
+        public static int MinAge = 18; 
+        public static int MaxAge = 70; 
+
         private readonly string _firstName; 
         private readonly string _lastName; // backing fields can only be set with constructor
 

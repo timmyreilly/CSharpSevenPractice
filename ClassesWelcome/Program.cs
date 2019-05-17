@@ -19,6 +19,11 @@ namespace ClassesWelcome
             PersonWithProperties personThree = new PersonWithProperties("Bob", "Sacamano", 55); 
             personThree.Age = 18; 
             Console.WriteLine("{0} {1} is aged: {2}", personThree.FirstName, personThree.LastName, personThree.Age); 
+            personThree.Age = 17; 
+            if(personThree.Age < PersonWithProperties.MinAge)
+            {
+                Console.WriteLine("Too Young"); 
+            }
 
             Console.ReadKey(); 
 
