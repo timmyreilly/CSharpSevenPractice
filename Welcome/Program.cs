@@ -62,8 +62,22 @@ namespace CSharpSeven
             addExclamationMarks(builderTwo); // this guy is passed by reference! 
 
             Console.WriteLine("String builder in Main: {0}", builderTwo.ToString());  
+
+            int a = 8; 
+            int b = 2; 
+            int sum, diff, prod; 
+            doEverything(a, b, out sum, out diff, out prod);
+            Console.WriteLine("a: {0}, b: {1}, sum: {2}, diff: {3}, prod: {4}", a, b, sum, diff, prod);  
+            
             Console.ReadKey();
 
+        }
+
+        static void doEverything(int a, int b, out int sum, out int diff, out int prod)
+        {
+            sum = a + b; 
+            diff = a - b; 
+            prod = a * b; 
         }
 
         private static void addExclamationMarks(StringBuilder b)
