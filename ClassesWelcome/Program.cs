@@ -30,6 +30,7 @@ namespace ClassesWelcome
             std.AvgGrade = 8;
 
             std.SayHello(); 
+            Console.WriteLine(std);
 
             Console.ReadKey(); 
 

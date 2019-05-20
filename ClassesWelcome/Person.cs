@@ -79,6 +79,11 @@ namespace ClassesWelcome
             Console.WriteLine("Hello I am a Person");
         }
 
+        public override string ToString()
+        {
+            return FirstName + " " + LastName + " age, " + Age; 
+        }
+
 
 
     }
