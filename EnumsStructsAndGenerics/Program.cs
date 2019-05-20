@@ -23,6 +23,23 @@ namespace EnumsStructsAndGenerics
             changeCoordinatesByReference(ref c);
             Console.WriteLine("I am here {0} {1}", c.Longitude, c.Latitude);
 
+            // Working with a generic stack
+            MyStack<string> friends = new MyStack<string>(); 
+            friends.Push("Bob"); 
+            friends.Push("Steve"); 
+            friends.Push("Frank"); 
+
+            while(!friends.IsEmpty())
+            {
+                Console.WriteLine(friends.Pop()); 
+            }
+
+            MyStack<int> randomNumbers = new MyStack<int>(); 
+            Random rdm = new Random(); 
+            randomNumbers.Push(rdm.Next(0, 10)); 
+            randomNumbers.Push(rdm.Next(0, 10)); 
+            randomNumbers.Push(rdm.Next(0, 10)); 
+
             Console.ReadKey();
         }
 
