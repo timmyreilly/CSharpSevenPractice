@@ -1,3 +1,5 @@
+using System;
+
 namespace ClassesWelcome
 {
     public class Person
@@ -19,7 +21,7 @@ namespace ClassesWelcome
 
         }
 
-        public Person(string firstName, string lastName, int age, decimal salary=45000)
+        public Person(string firstName, string lastName, int age, decimal salary = 45000)
         {
             FirstName = firstName;
             this.LastName = lastName;
@@ -27,25 +29,26 @@ namespace ClassesWelcome
             this.salary = salary;
         }
 
+
         // how about some properties. 
     }
 
-    public class PersonWithProperties 
+    public class PersonWithProperties
     {
 
         // static for all PersonWithProperties 
         // all person are adults and younger than 70 for all 
-        public static int MinAge = 18; 
-        public static int MaxAge = 70; 
+        public static int MinAge = 18;
+        public static int MaxAge = 70;
 
-        private readonly string _firstName; 
+        private readonly string _firstName;
         private readonly string _lastName; // backing fields can only be set with constructor
 
         public string FirstName
         {
             get
             {
-                return _firstName; 
+                return _firstName;
             }
         }
 
@@ -53,22 +56,30 @@ namespace ClassesWelcome
         {
             get
             {
-                return _lastName; 
+                return _lastName;
             }
         }
 
-        public int Age{ get; set; }
+        public int Age { get; set; }
 
-        private decimal _salary; 
+        private decimal _salary;
 
         public PersonWithProperties(string firstName, string lastName, int age, decimal salary = 45000)
         {
-            _firstName = firstName; 
-            _lastName = lastName; 
-            Age = age; 
+            _firstName = firstName;
+            _lastName = lastName;
+            Age = age;
 
             // default value
-            _salary = salary; 
+            _salary = salary;
         }
+
+        public virtual void SayHello()
+        {
+            Console.WriteLine("Hello I am a Person");
+        }
+
+
+
     }
 }

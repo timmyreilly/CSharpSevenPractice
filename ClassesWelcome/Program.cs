@@ -25,6 +25,12 @@ namespace ClassesWelcome
                 Console.WriteLine("Too Young"); 
             }
 
+            Student std = new Student("John", "Wick", 44); 
+            std.University = "Seattle U"; 
+            std.AvgGrade = 8;
+
+            std.SayHello(); 
+
             Console.ReadKey(); 
 
         }
