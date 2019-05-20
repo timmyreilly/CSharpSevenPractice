@@ -33,7 +33,7 @@ namespace ClassesWelcome
         // how about some properties. 
     }
 
-    public class PersonWithProperties
+    public class PersonWithProperties : IRun
     {
 
         // static for all PersonWithProperties 
@@ -84,7 +84,9 @@ namespace ClassesWelcome
             return FirstName + " " + LastName + " age, " + Age; 
         }
 
-
-
+        public void Run(int distance)
+        {
+            Console.WriteLine("I am running for {0} kilometers", distance); 
+        }
     }
 }

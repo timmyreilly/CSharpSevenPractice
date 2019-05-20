@@ -32,6 +32,8 @@ namespace ClassesWelcome
             std.SayHello(); 
             Console.WriteLine(std);
 
+            std.Run(5); 
+
             Console.ReadKey(); 
 
         }
