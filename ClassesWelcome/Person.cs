@@ -33,7 +33,63 @@ namespace ClassesWelcome
         // how about some properties. 
     }
 
-    public class PersonWithProperties : IRun
+    public class PersonUsingComposition  {
+        public static int MinAge = 18;
+        public static int MaxAge = 70;
+
+        private readonly string _firstName;
+        private readonly string _lastName; // backing fields can only be set with constructor
+
+        private IRun _runner; 
+
+        public string FirstName
+        {
+            get
+            {
+                return _firstName;
+            }
+        }
+
+        public string LastName
+        {
+            get
+            {
+                return _lastName;
+            }
+        }
+
+        public int Age { get; set; }
+
+        private decimal _salary;
+
+        public PersonUsingComposition(string firstName, string lastName, int age, IRun runner, decimal salary = 45000)
+        {
+            _firstName = firstName;
+            _lastName = lastName;
+            _runner = runner; 
+            Age = age;
+
+            // default value
+            _salary = salary;
+        }
+
+        public virtual void SayHello()
+        {
+            Console.WriteLine("Hello I am a Person");
+        }
+
+        public override string ToString()
+        {
+            return FirstName + " " + LastName + " age, " + Age; 
+        }
+
+        public void Run(int distance)
+        {
+            _runner.Run(4); 
+        }
+    }
+
+    public class PersonWithProperties : IRun // demonstration of a is-a relationship
     {
 
         // static for all PersonWithProperties 

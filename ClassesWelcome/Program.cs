@@ -34,6 +34,16 @@ namespace ClassesWelcome
 
             std.Run(5); 
 
+            PersonUsingComposition slow = new PersonUsingComposition("John", "Smith", 54, new SlowRunner());
+            PersonUsingComposition fast = new PersonUsingComposition("Annie", "Smith", 54, new FastRunner());
+            slow.Run(4); 
+            fast.Run(5);   
+
+            // how would we make a person run. 
+
+            Dog d = new Dog("Max", new FastRunner());
+            d.Run(54); 
+
             Console.ReadKey(); 
 
         }
