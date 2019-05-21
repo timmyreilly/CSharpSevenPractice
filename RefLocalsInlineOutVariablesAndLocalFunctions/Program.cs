@@ -27,6 +27,19 @@ namespace RefLocalsInlineOutVariablesAndLocalFunctions
             calculate(8, 3, out var v, out var vTwo); 
             Console.WriteLine($"v: {v}"); 
             Console.WriteLine($"vTwo: {vTwo}");
+
+            // Digit Seperators 
+
+            int number = 1_750_036;
+            int sameNumber = 1750036; 
+            // These are equivalent ^ These seperators "_" have no effect.  
+            double specificNumber = 1_123_123.54; 
+
+            int myBinary = 0b0010; 
+            Console.WriteLine($"Your Binary {myBinary}"); 
+            int moreBinary = 0b1000_0010; 
+            Console.WriteLine($"Your Binary {moreBinary}"); 
+
              
             Console.ReadKey(); 
         }
