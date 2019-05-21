@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace RefLocalsInlineOutVariablesAndLocalFunctions
 {
@@ -47,6 +48,24 @@ namespace RefLocalsInlineOutVariablesAndLocalFunctions
             sum = a + b; 
             diff = a - b; 
         }
+
+        private static async Task<bool> getBoolOldWayAsync()
+        {
+            // This is inefficient because we need to instantiate a value of type Task everytime. 
+            await Task.Delay(3000); 
+            return false; 
+        }
+
+        private static async ValueTask<bool> getBoolAsyncNewWay() 
+        {
+            // ValueTask<T> is a struct and will be allocated on the stack, which is faster.  
+            // ValueTask is a value type. 
+            await Task.Delay(3000);
+            return true; 
+        }
+
+        
+
 
 
     }

@@ -66,6 +66,13 @@ namespace ClassesWelcome
         {
             _firstName = firstName;
             _lastName = lastName;
+            // if(runner == null) 
+            // {
+            //     throw new ArgumentNullException("you didn't give me what I needed to initialize this class"); 
+            // }
+
+            _runner = runner ?? throw new ArgumentNullException("runner"); 
+            
             _runner = runner; 
             Age = age;
 

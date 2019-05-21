@@ -21,29 +21,49 @@ namespace RefLocalsInlineOutVariablesAndLocalFunctions
 
         private int _age; 
 
-        public int Age
+        // public int Age
+        // {
+        //     get
+        //     {
+        //         return _age; 
+        //     }
+        //     set 
+        //     {
+        //         _age = value; 
+        //     }
+        // }
+
+        public int Age 
         {
-            get
-            {
-                return _age; 
-            }
-            set 
-            {
-                _age = value; 
-            }
+            get => _age; 
+            set => _age = value; 
         }
 
-        public PersonUsingExpressionBodyMembers(string firstname, string lastName, int age) 
+        // public PersonUsingExpressionBodyMembers(string firstname, string lastName, int age) 
+        // {
+        //     FirstName = firstname; 
+        //     LastName = lastName; 
+        //     Age = age; 
+        // }
+
+        // Becomes: 
+
+        public PersonUsingExpressionBodyMembers(string firstName, string lastName, int age) => init(firstName, lastName, age); 
+
+        private void init(string firstName, string lastName, int age) 
         {
-            FirstName = firstname; 
+            FirstName = firstName; 
             LastName = lastName; 
             Age = age; 
         }
 
-        ~PersonUsingExpressionBodyMembers()
-        {
-            Console.WriteLine("Finalizing Person"); 
-        }
+        // ~PersonUsingExpressionBodyMembers()
+        // {
+        //     Console.WriteLine("Finalizing Person"); 
+        // }
+
+        ~PersonUsingExpressionBodyMembers() => Console.WriteLine("Finalizing Person"); 
+        
 
         // public override string ToString()
         // {
@@ -54,6 +74,5 @@ namespace RefLocalsInlineOutVariablesAndLocalFunctions
         // This is an expression body: 
         public override string ToString() => FullName; 
 
-        
     }
 }
