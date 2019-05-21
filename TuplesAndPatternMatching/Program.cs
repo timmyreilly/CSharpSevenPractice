@@ -30,6 +30,7 @@ namespace TuplesAndPatternMatching
             describePerson(p); 
             Person e = new Employee("Bob", "Sacamano", 43, EmployeeType.Hourly); 
             describePerson(e); 
+            describeEmployeeIs(e); 
             Console.ReadKey(); 
 
         }
@@ -60,6 +61,21 @@ namespace TuplesAndPatternMatching
                     throw new ArgumentException("You need to pass a person to this method");  
             }
             // The order matters! The person check switch would always be called! Make sure the most generic is last on your switch statement. 
+        }
+
+        private static void describeEmployeeIs(Person p) 
+        {
+             if(p is Employee e) 
+             {
+                 if(e.Type == EmployeeType.Hourly)
+                 {
+                     Console.WriteLine($"{e} is an hourly employee"); 
+                 } 
+                 else 
+                 {
+                     Console.WriteLine($"{e} is a salaried employee"); 
+                 }
+             }
         }
 
         private static (string, double, string) getCar() {
