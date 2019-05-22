@@ -22,3 +22,18 @@ string
 
 ### Garbage Collection 
 
+
+
+### Dependency Injection
+
+'new' = Tight Coupling 
+
+DI Container or IoC Container
+Inversion of Control. The container is responsible for maintaining a list of dependencies of the application. 
+
+Loose Coupling: 
+interface IClassA
+{
+    void DoSomething(); 
+}
+
