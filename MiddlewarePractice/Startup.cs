@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using MiddlewarePractice.Middleware;
 
 namespace MiddlewarePractice
 {
@@ -25,16 +26,18 @@ namespace MiddlewarePractice
                 app.UseDeveloperExceptionPage();
             }
 
-            app.Use(async (context, next) => {
-                try 
-                {
-                    await next(); 
-                }
-                catch (Exception e)
-                {
-                    await context.Response.WriteAsync("Oops, something went wrong"); 
-                }
-            }); 
+            // app.Use(async (context, next) => {
+            //     try 
+            //     {
+            //         await next(); 
+            //     }
+            //     catch (Exception e)
+            //     {
+            //         await context.Response.WriteAsync("Oops, something went wrong"); 
+            //     }
+            // }); 
+
+            app.UseMiddleware<CustomErrorHandlingMiddleware>(); 
 
             app.Use((context, next) => {
                 Random randomizer = new Random(); 
