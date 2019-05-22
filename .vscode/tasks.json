@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/MiddlewarePractice/MiddlewarePractice.csproj"
+                "${workspaceFolder}/WebAppOne/WebAppOne.csproj"
             ],
             "problemMatcher": "$tsc"
         },
@@ -17,7 +17,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/MiddlewarePractice/MiddlewarePractice.csproj"
+                "${workspaceFolder}/WebAppOne/WebAppOne.csproj"
             ],
             "problemMatcher": "$tsc"
         },
@@ -28,7 +28,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/MiddlewarePractice/MiddlewarePractice.csproj"
+                "${workspaceFolder}/WebAppOne/WebAppOne.csproj"
             ],
             "problemMatcher": "$tsc"
         }

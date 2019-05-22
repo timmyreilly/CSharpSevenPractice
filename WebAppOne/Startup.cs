@@ -45,6 +45,7 @@ namespace WebAppOne
         {
             if (env.IsDevelopment())
             {
+                Console.WriteLine("We're in dev mode"); 
                 app.UseDeveloperExceptionPage();
             }
             else
@@ -58,31 +59,45 @@ namespace WebAppOne
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
-            app.Run(async (context) =>
+            app.UseMvc(routes =>
             {
-                var names = service.GetNames();
-                StringBuilder builder = new StringBuilder();
-                foreach (var name in names)
-                {
-                    if (Configuration.GetValue<bool>("CapitalizedWords"))
-                    {
-                        builder.Append(name.ToUpper() + " "); 
-                    }
-                    else
-                    {
-                        builder.Append(name + " ");
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
 
-                    }
-                }
-                await context.Response.WriteAsync(builder.ToString());
+                routes.MapRoute(
+                    name: "AllGames",
+                    template: "games/all",
+                    defaults: new { Controller = "Pages", Action = "Games"} 
+                );
+
+                routes.MapRoute(
+                    name: "AllMovies",
+                    template: "movies/all",
+                    defaults: new { Controller = "Pages", Action = "Movies"}
+                );  
             });
 
-            // app.UseMvc(routes =>
+            // app.Run(async (context) =>
             // {
-            //     routes.MapRoute(
-            //         name: "default",
-            //         template: "{controller=Home}/{action=Index}/{id?}");
+            //     var names = service.GetNames();
+            //     StringBuilder builder = new StringBuilder();
+            //     foreach (var name in names)
+            //     {
+            //         if (Configuration.GetValue<bool>("CapitalizedWords"))
+            //         {
+            //             builder.Append(name.ToUpper() + " "); 
+            //         }
+            //         else
+            //         {
+            //             builder.Append(name + " ");
+
+            //         }
+            //     }
+            //     await context.Response.WriteAsync(builder.ToString());
             // });
+
+            
         }
     }
 }
