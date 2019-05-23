@@ -37,6 +37,7 @@ namespace WebAppOne
 
             services.AddTransient<FooService>();
             services.AddTransient<IEntertainmentService, EntertainmentServiceDefault>(); 
+            services.AddTransient<IAnnouncementsService, AnnouncementService>(); 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

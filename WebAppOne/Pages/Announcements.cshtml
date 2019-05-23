@@ -1,0 +1,26 @@
+
+@page 
+@using WebAppOne.Services; 
+@using WebAppOne.Models; 
+@inject IAnnouncementsService service; 
+
+@functions {
+    public IEnumerable<Announcement> Announcements { get; set; }
+    public async Task<IActionResult> OnGetAsync() 
+    {
+        Announcements = await service.GetAnnouncementAsync(); 
+        return Page(); 
+    }
+}
+
+
+<h3 class="text-center">Announcements</h3>
+
+@foreach(var accouncement in Announcements)
+{
+    <div class="row">
+        <div class="col-xs-12">
+            <p>annoucement</p>
+        </div>
+    </div>
+}
