@@ -11,6 +11,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using WebAppOne.Services;
+using Microsoft.EntityFrameworkCore.Extensions;
+using Microsoft.EntityFrameworkCore;
+using WebAppOne.Data;
 
 namespace WebAppOne
 {
@@ -38,6 +41,7 @@ namespace WebAppOne
             services.AddTransient<FooService>();
             services.AddTransient<IEntertainmentService, EntertainmentServiceDefault>(); 
             services.AddTransient<IAnnouncementsService, AnnouncementService>(); 
+            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default"))); 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
