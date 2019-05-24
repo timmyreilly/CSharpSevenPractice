@@ -42,6 +42,7 @@ namespace WebAppOne
             services.AddTransient<IEntertainmentService, EntertainmentServiceDefault>(); 
             services.AddTransient<IAnnouncementsService, AnnouncementService>(); 
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default"))); 
+            services.AddTransient<ISongsService, SongService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

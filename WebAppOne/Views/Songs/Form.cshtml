@@ -1,0 +1,20 @@
+@model WebAppOne.Models.Song
+
+@{
+    Layout = "_Layout"; 
+}
+
+<form asp-controller="Songs" asp-action="Add" method="post">
+    <div class="form-group">
+        <input type="text" name="Title" asp-for="Title" placeholder="Title"  /> 
+    </div>
+    <div class="form-group">
+        <input type="text" name="Artist" asp-for="Artist" placeholder="Artist"  /> 
+    </div>
+    <div class="form-group">
+        <input type="text" name="Album" asp-for="Album" placeholder="Album"  /> 
+    </div>
+    <div class="form-group">
+        <button class="btn btn primary" type="submit">Add</button>
+    </div>
+</form>>

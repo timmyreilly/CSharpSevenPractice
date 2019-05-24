@@ -1,0 +1,33 @@
+@model IEnumerable<WebAppOne.Models.Song>
+@{
+    Layout = "_Layout"; 
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Artist</th>
+                    <th>Album</th>
+                </tr>
+            </thead>
+        @foreach (var song in Model)
+        {
+            <tr>
+                <td>
+                    @song.Title
+                </td>
+                <td>
+                    @song.Artist
+                </td>
+                <td>
+                    @song.Album
+                </td>
+            </tr>
+        }
+        </table>
+            
+    </div>
+</div>
