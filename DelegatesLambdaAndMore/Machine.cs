@@ -1,3 +1,5 @@
+using System.Threading;
+
 namespace DelegatesLambdaAndMore
 {
 
@@ -19,7 +21,7 @@ namespace DelegatesLambdaAndMore
                 {
                     var prev = _currentTemp;
                     _currentTemp = value;
-                    OnTempChanged(prev, value); 
+                    OnTempChanged(prev, value);
                 }
             }
         }
@@ -40,11 +42,11 @@ namespace DelegatesLambdaAndMore
 
         private void OnTempChanged(double prev, double current)
         {
-            _tempChange(prev, current); 
+            if (_tempChange != null)
+            {
+                _tempChange(prev, current);
+            }
         }
-
-
-
 
     }
 }
