@@ -7,13 +7,22 @@ namespace DelegatesLambdaAndMore
     {
         static void Main(string[] args)
         {
-            Machine machine = new Machine(); 
+            Machine machine = new Machine();
             machine.RegisterTempWatcher(LogTempToConsole);
-            machine.RegisterTempWatcher(LogTempToFile); 
-            machine.RegisterTempWatcher((double prev, double current) => {
+            machine.RegisterTempWatcher(LogTempToFile);
+            machine.RegisterTempWatcher((double prev, double current) =>
+            {
+                Console.WriteLine($"Temperature changed from {prev} to {current} we're observing this from our lambmda");
+            });
 
-            })
-            machine.TurnOn(); 
+            machine.RegisterTempWatcher(async (double prev, double current) =>
+            {
+                using (StreamWriter writer = new StreamWriter("temp.txt", true))
+                {
+                    await writer.WriteLineAsync($"Machine temperature changed from {prev} to {current}");
+                }
+            });
+            machine.TurnOn();
             Console.ReadKey();
         }
 
@@ -24,9 +33,9 @@ namespace DelegatesLambdaAndMore
 
         private static async void LogTempToFile(double prev, double current)
         {
-            using(StreamWriter writer = new StreamWriter("temp.txt", true))
-            { 
-                await writer.WriteLineAsync($"Michine temperature changed from {prev} to {current}"); 
+            using (StreamWriter writer = new StreamWriter("temp.txt", true))
+            {
+                await writer.WriteLineAsync($"Michine temperature changed from {prev} to {current}");
             }
         }
     }
