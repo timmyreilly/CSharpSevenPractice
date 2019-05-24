@@ -37,3 +37,12 @@ interface IClassA
     void DoSomething(); 
 }
 
+
+### Good things about migrations: 
+Migrations are good because your models always match the database. This can be good for consistency. 
+This also provides some version control. We don't have to export our schema. 
+We can quickly role-back to previous versions of your data. 
+
+To create our first migration: 
+`dotnet ef migrations add InitialMigration` 
+
