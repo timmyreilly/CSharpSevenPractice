@@ -61,9 +61,10 @@ namespace ThreadsAndParellelism
             Task[] tasks = new Task[tasksAmount]; 
             for (int i = 0; i < tasksAmount; i++)
             {
-                string fileName = $"task-file-{i+1}"; 
+                string fileName = $"log-task-file-{i+1}"; 
+                int id = i + 1; 
                 tasks[i] = Task.Run(() => {
-                    Console.WriteLine($"Task {i + 1} running on thread {Thread.CurrentThread.ManagedThreadId} / writing file: {fileName}"); 
+                    Console.WriteLine($"Task {i + 1} actually you want id: {id} running on thread {Thread.CurrentThread.ManagedThreadId} / writing file: {fileName}"); 
                     var generator = new ReportGenerator(fileName); 
                     generator.Generate(); 
                 }); 
