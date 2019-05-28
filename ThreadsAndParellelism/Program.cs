@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace ThreadsAndParellelism
 {
@@ -9,7 +10,8 @@ namespace ThreadsAndParellelism
         {
             Console.WriteLine("Hello World!");
             WriteLogs();
-            WriteLogsWithPools(); 
+            WriteLogsWithPools();
+            WriteFilesWithTPL(); 
             Console.ReadKey();
         }
 
@@ -48,7 +50,27 @@ namespace ThreadsAndParellelism
                     logManager.Generate();
                 }));
             }
+        }
 
+        // using TPL (Task Parallel Library) 
+        // TPL .NET 4.0 Async for a task. A more efficient way, and working at a higher level. 
+
+        private static void WriteFilesWithTPL()
+        {
+            int tasksAmount = 10;
+            Task[] tasks = new Task[tasksAmount]; 
+            for (int i = 0; i < tasksAmount; i++)
+            {
+                string fileName = $"task-file-{i+1}"; 
+                tasks[i] = Task.Run(() => {
+                    Console.WriteLine($"Task {i + 1} running on thread {Thread.CurrentThread.ManagedThreadId} / writing file: {fileName}"); 
+                    var generator = new ReportGenerator(fileName); 
+                    generator.Generate(); 
+                }); 
+
+            }
+            Task.WaitAll(tasks); 
+            Console.WriteLine("Writing tasks finished"); 
         }
     }
 }
