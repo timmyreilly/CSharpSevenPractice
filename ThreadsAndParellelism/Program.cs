@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using GenericExtensions;
 
 namespace ThreadsAndParellelism
 {
@@ -17,11 +19,34 @@ namespace ThreadsAndParellelism
             Console.WriteLine("Offline Server in order"); 
             m.PrintOfflineServers();
             Console.ReadKey();
+            testExtensions();
+            Console.ReadKey();
+
+        }
+
+        private static void testExtensions()
+        {
+            List<string> colors = new List<string>()
+            {
+                "blue", "red", "orange", "green"
+            }; 
+
+            var stack = colors.ToStack();
+            Console.WriteLine("Colors - List: "); 
+            foreach(var color in colors) 
+            {
+                Console.WriteLine($"{color} "); 
+            } 
+            Console.WriteLine("Colors - stack: "); 
+            while(stack.Count > 0) 
+            {
+                Console.WriteLine($"{stack.Pop()}"); 
+            }
         }
 
         private static void WriteLogs()
         {
-            int logFilesAmount = 10;
+            int logFilesAmount = 2;
             Thread[] threads = new Thread[logFilesAmount];
             Console.WriteLine("Starting writer threads...");
             for (int i = 0; i < logFilesAmount; i++)
@@ -43,12 +68,12 @@ namespace ThreadsAndParellelism
 
         private static void WriteLogsWithPools()
         {
-            int logFilesAmount = 10;
+            int logFilesAmount = 2;
 
             // simpler code with threadpools: 
             for (int i = 0; i < logFilesAmount; i++)
             {
-                var logManager = new LogManager($"log-{i + 1}.txt");
+                var logManager = new LogManager($"file-log-{i + 1}.txt");
                 ThreadPool.QueueUserWorkItem(new WaitCallback((o) =>
                 {
                     logManager.Generate();
@@ -61,11 +86,11 @@ namespace ThreadsAndParellelism
 
         private static void WriteFilesWithTPL()
         {
-            int tasksAmount = 10;
+            int tasksAmount = 2;
             Task[] tasks = new Task[tasksAmount]; 
             for (int i = 0; i < tasksAmount; i++)
             {
-                string fileName = $"log-task-file-{i+1}"; 
+                string fileName = $"file-log-task-{i+1}"; 
                 int id = i + 1; 
                 tasks[i] = Task.Run(() => {
                     Console.WriteLine($"Task {i + 1} actually you want id: {id} running on thread {Thread.CurrentThread.ManagedThreadId} / writing file: {fileName}"); 
