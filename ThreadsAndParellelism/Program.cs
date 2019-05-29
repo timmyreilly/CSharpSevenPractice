@@ -12,6 +12,10 @@ namespace ThreadsAndParellelism
             WriteLogs();
             WriteLogsWithPools();
             WriteFilesWithTPL(); 
+            ServerManager m = new ServerManager(); 
+            m.PrintOfflineAsianServersWithLotsOfRamLinq();
+            Console.WriteLine("Offline Server in order"); 
+            m.PrintOfflineServers();
             Console.ReadKey();
         }
 
