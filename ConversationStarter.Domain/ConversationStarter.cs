@@ -5,21 +5,27 @@ namespace ConversationStarter.Domain
     public class ConversationStarter
     {
         public Guid Id { get; set; }
-        private string Text; 
+        private ConversationStarterText Text;
 
-        public ConversationStarter(Guid id)
+        public ConversationStarter(Guid id, ConversationStarterText text)
         {
-            if(id == null) 
+            if (id == null)
             {
-                throw new ArgumentNullException(nameof(id), "ConversationStarter id cannot be empty"); 
+                throw new ArgumentNullException(nameof(id), "ConversationStarter id cannot be empty");
             }
 
-            Id = id;    
+            if (text == null)
+            {
+                throw new ArgumentNullException(nameof(id), "ConversationStarter id cannot be empty");
+            }
+
+            Text = text; 
+            Id = id;
         }
 
-        string GetConversationStarter() 
+        ConversationStarterText GetConversationStarter()
         {
-            return Text; 
+            return Text;
         }
     }
 }
